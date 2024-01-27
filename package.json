@@ -1,5 +1,4 @@
 {
-  "name": "viem",
   "workspaces": ["examples/*", "environments/*", "site", "src", "test"],
   "private": true,
   "type": "module",

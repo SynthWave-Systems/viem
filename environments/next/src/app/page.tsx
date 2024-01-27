@@ -1,14 +1,22 @@
 import { http, createPublicClient, webSocket } from 'viem'
-import { oortMainnetDev } from 'viem/chains'
+import { mainnet } from 'viem/chains'
 import { Client } from './client'
 
 export default async function Home() {
   const client = createPublicClient({
-    chain: oortMainnetDev,
+    chain: mainnet,
     transport: http(),
   })
 
+  const webSocketClient = createPublicClient({
+    chain: mainnet,
+    transport: webSocket(
+      'wss://eth-mainnet.g.alchemy.com/v2/4iIl6mDHqX3GFrpzmfj2Soirf3MPoAcH',
+    ),
+  })
+
   await client.getBlockNumber()
+  await webSocketClient.getBlockNumber()
 
   return (
     <>
